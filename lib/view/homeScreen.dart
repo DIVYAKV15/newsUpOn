@@ -33,10 +33,13 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: Colors.black,
       appBar: AppBar(
           backgroundColor: Colors.black,
-          title: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: const Text("News UpOn 🗞️",
-                style: TextStyle(color: Colors.white, fontSize: 25,fontWeight: FontWeight.bold)),
+          title: const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text("News UpOn 🗞️",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold)),
           ),
           actions: [
             IconButton(
@@ -45,15 +48,17 @@ class _HomeScreenState extends State<HomeScreen> {
                     MaterialPageRoute(
                         builder: (context) => const SearchScreen())),
                 icon: const Icon(
-                  Icons.search,size: 30,
+                  Icons.search,
+                  size: 30,
                   color: Colors.white,
-
                 )),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: InkWell(child: Image(image: AssetImage("asset/images/img.png"),height: 30),),
+            const Padding(
+              padding: EdgeInsets.all(12.0),
+              child: InkWell(
+                child: Image(
+                    image: AssetImage("asset/images/img.png"), height: 30),
+              ),
             )
-
           ]),
       body: Provider.of<HomeController>(context).isLoading == true
           ? Center(
