@@ -13,14 +13,10 @@ class HttpService {
     print(response.statusCode);
     Map<String, dynamic> decodedData = {}; //map for storing response
     if (response.statusCode == 200) {
-      return decodedData =jsonDecode(response.body);
-
+      return decodedData = jsonDecode(response.body);
+    } else {
+      print("Api Failed");
+      return decodedData = jsonDecode(response.body);
     }
-    else
-      {
-        print("Api Failed");
-        return decodedData =jsonDecode(response.body);
-      }
-
   }
 }

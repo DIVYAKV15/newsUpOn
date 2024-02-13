@@ -33,7 +33,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
           backgroundColor: Colors.black,
           appBar: AppBar(
             backgroundColor: Colors.black,
-            title: Text(
+            title: const Text(
               "Categories",
               style: TextStyle(
                   color: Colors.white,
@@ -52,9 +52,9 @@ class _CategoryScreenState extends State<CategoryScreen> {
                   color: Colors.grey,
                   fontSize: 20,
                   fontWeight: FontWeight.w500),
-              overlayColor: MaterialStatePropertyAll(Colors.yellow),
+              overlayColor: const MaterialStatePropertyAll(Colors.yellow),
               indicatorSize: TabBarIndicatorSize.tab,
-              indicatorPadding: EdgeInsets.symmetric(horizontal: 5),
+              indicatorPadding: const EdgeInsets.symmetric(horizontal: 5),
               indicator: BoxDecoration(
                   color: Colors.yellow,
                   borderRadius: BorderRadius.circular(10)),
@@ -76,7 +76,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                       width: 150),
                 )
               : Padding(
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   child: ListView.separated(
                       itemBuilder: (context, index) => NewsCard(
                           title: provider.newsModel.articles![index].title.toString() ??
@@ -94,7 +94,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                               "",
                           sourceName: provider.newsModel.articles![index].source.toString() ?? "",
                           url: provider.newsModel.articles![index].url.toString() ?? ""),
-                      separatorBuilder: (context, index) => Divider(height: 20),
+                      separatorBuilder: (context, index) => const Divider(height: 20),
                       itemCount: provider.newsModel.articles?.length ?? 0),
                 )),
     );

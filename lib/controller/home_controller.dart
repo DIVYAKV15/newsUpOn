@@ -31,13 +31,14 @@
 // }
 import 'dart:convert';
 
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:newsupon/model/newsModel.dart';
 import 'package:http/http.dart' as http;
 import 'package:share_plus/share_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomeController with ChangeNotifier {
-  late NewsModel newsModel = NewsModel();
+  late NewsModel newsModel;
   bool isLoading = false;
 
   //var baseUrl = "https://newsapi.org/";
@@ -46,7 +47,7 @@ class HomeController with ChangeNotifier {
     isLoading = true;
     notifyListeners();
     final url = Uri.parse(
-        "https://newsapi.org/v2/top-headlines?country=in&apiKey=49fe83b5cf85471f8bd4d35ff3f208a5");
+        "https://newsapi.org/v2/top-headlines?country=in&apiKey=7389d6a114fa4d3c97a1e142168adb32");
     final response = await http.get(url);
     print(response.statusCode);
     Map<String, dynamic> decodedData = {}; // map for storing response body
@@ -57,6 +58,21 @@ class HomeController with ChangeNotifier {
     }
     newsModel = NewsModel.fromJson(decodedData);
     isLoading = false;
+    notifyListeners();
+  }
+
+// Function to launch a URL
+  Future<void> launchURL(String url) async {
+    final Uri url1 = Uri.parse(url);
+    try {
+      if (!await launchUrl(url1, mode: LaunchMode.inAppWebView)) {
+        await launchUrl(url1, mode: LaunchMode.inAppWebView);
+      } else {
+        throw 'Could not launch $url';
+      }
+    } catch (e) {
+      print('Error launching URL: $e');
+    }
     notifyListeners();
   }
 

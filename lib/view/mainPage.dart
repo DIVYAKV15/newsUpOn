@@ -10,7 +10,8 @@ class MainPage extends StatelessWidget {
     return Scaffold(
       body: Provider.of<BottomController>(context)
           .screens[Provider.of<BottomController>(context).selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(backgroundColor: Colors.black,
+      bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Colors.black,
           unselectedItemColor: Colors.grey,
           selectedItemColor: Colors.yellow,
           selectedIconTheme: const IconThemeData(size: 25),
@@ -18,7 +19,8 @@ class MainPage extends StatelessWidget {
           showUnselectedLabels: false,
           showSelectedLabels: true,
           currentIndex: Provider.of<BottomController>(context).selectedIndex,
-          onTap: Provider.of<BottomController>(context,listen: false).onTapItem,
+          onTap:
+              Provider.of<BottomController>(context, listen: false).onTapItem,
           items: const [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
             BottomNavigationBarItem(
