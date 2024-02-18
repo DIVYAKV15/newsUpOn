@@ -16,22 +16,25 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     TextEditingController textController = TextEditingController();
     SearchScreenController provider =
-    Provider.of<SearchScreenController>(context);
+        Provider.of<SearchScreenController>(context);
     return Scaffold(
-      body: SafeArea(
+      backgroundColor: Colors.black,
+     body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(20),
           child: Column(
             children: [
               SizedBox(
                 height: 45,
-                width: MediaQuery
-                    .sizeOf(context)
-                    .width * 2 / 3,
-                child: SearchBar(
+                width: MediaQuery.of(context).size.width * 2 / 3,
+                child: SearchBar(backgroundColor: MaterialStatePropertyAll(Colors.black),
+                  overlayColor: MaterialStatePropertyAll(Colors.grey),
+                  shape: MaterialStatePropertyAll<OutlinedBorder>(RoundedRectangleBorder(side: BorderSide(color: Colors.white) )),
                   controller: textController,
-                  leading: const Icon(Icons.search),
+                  leading: const Icon(Icons.search,color: Colors.yellow),
                   hintText: "Search",
+                  hintStyle:MaterialStatePropertyAll<TextStyle>(TextStyle(color: Colors.white)) ,
+                  textStyle: MaterialStatePropertyAll<TextStyle>(TextStyle(color: Colors.white)) ,
                   onTap: () {
                     provider.searchData(
                         searchText: textController.text.toLowerCase());
@@ -40,47 +43,39 @@ class _SearchScreenState extends State<SearchScreen> {
                 ),
               ),
               Expanded(
-                child: Provider
-                    .of<SearchScreenController>(context)
-                    .isLoading ==
-                    true
+                child: Provider.of<SearchScreenController>(context).isLoading ==
+                        true
                     ? Center(
-                    child: LottieBuilder.asset(
-                      "asset/animations/Animation - 1706853567309.json",
-                      fit: BoxFit.cover,
-                      height: 150,
-                      width: 150,
-                    ))
+                        child: LottieBuilder.asset(
+                        "asset/animations/Animation - 1706853567309.json",
+                        fit: BoxFit.cover,
+                        height: 150,
+                        width: 150,
+                      ))
                     : ListView.separated(
-                    itemBuilder: (context, index) =>
-                        NewsCard(
-                            title: provider.newsModel?.articles![index].title
-                                .toString() ??
+                        itemBuilder: (context, index) => NewsCard(
+                            title: provider.newsModel?.articles![index].title.toString() ??
                                 "",
                             description: provider
-                                .newsModel?.articles![index].description
-                                .toString() ??
+                                    .newsModel?.articles![index].description
+                                    .toString() ??
                                 "",
                             date: provider
                                 .newsModel?.articles![index].publishedAt,
                             imageUrl: provider
-                                .newsModel?.articles![index].urlToImage
-                                .toString() ??
+                                    .newsModel?.articles![index].urlToImage
+                                    .toString() ??
                                 "",
-                            content: provider.newsModel?.articles![index]
-                                .content.toString() ?? "",
-                            sourceName: provider.newsModel?.articles![index]
-                                .source.toString() ?? "",
-                            url: provider.newsModel?.articles![index].url
-                                .toString() ?? ""),
-                    separatorBuilder: (context, index) =>
-                    const Divider(height: 20),
-                    itemCount: provider.newsModel?.articles?.length ?? 0),
+                            content: provider.newsModel?.articles![index].content.toString() ?? "",
+                            sourceName: provider.newsModel?.articles![index].source.toString() ?? "",
+                            url: provider.newsModel?.articles![index].url.toString() ?? ""),
+                        separatorBuilder: (context, index) => const Divider(height: 20),
+                        itemCount: provider.newsModel?.articles?.length ?? 0),
               )
             ],
           ),
         ),
-      ),
+     ),
     );
   }
 }

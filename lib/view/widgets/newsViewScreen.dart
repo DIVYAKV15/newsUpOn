@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:newsupon/view/homeScreen.dart';
+import 'package:newsupon/view/mainPage.dart';
 
 import 'package:provider/provider.dart';
 
@@ -8,13 +10,14 @@ import '../../controller/home_controller.dart';
 class NewsViewScreen extends StatelessWidget {
   const NewsViewScreen(
       {super.key,
-        required this.title,
-        required this.description,
-        this.date,
-        required this.imageUrl,
-        required this.contant,
-        required this.sourceName,
-        required this.url});
+      required this.title,
+      required this.description,
+      this.date,
+      required this.imageUrl,
+      required this.contant,
+      required this.sourceName,
+      required this.url});
+
   final String title;
   final String description;
   final DateTime? date;
@@ -26,8 +29,10 @@ class NewsViewScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
+      appBar: AppBar(leading: IconButton(onPressed: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>MainPage()));
+      }, icon:Icon( Icons.arrow_back,color: Colors.yellow),),
+        backgroundColor: Colors.black,
         elevation: 0,
         iconTheme: const IconThemeData(color: Color(0xff6A3DE8), size: 30),
       ),
@@ -40,7 +45,7 @@ class NewsViewScreen extends StatelessWidget {
               Text(
                 title,
                 style:
-                const TextStyle(fontSize: 25, fontWeight: FontWeight.w700),
+                    const TextStyle(fontSize: 25, fontWeight: FontWeight.w700),
               ),
               const SizedBox(
                 height: 20,
@@ -65,7 +70,7 @@ class NewsViewScreen extends StatelessWidget {
               Text(
                 "$description",
                 style:
-                const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
               ),
               const SizedBox(
                 height: 20,
@@ -73,8 +78,8 @@ class NewsViewScreen extends StatelessWidget {
               SingleChildScrollView(
                 child: Text(
                   "$contant",
-                  style:
-                  const TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                  style: const TextStyle(
+                      fontSize: 15, fontWeight: FontWeight.w500),
                 ),
               ),
               const SizedBox(
@@ -84,6 +89,7 @@ class NewsViewScreen extends StatelessWidget {
                 onTap: () {
                   Provider.of<HomeController>(context, listen: false)
                       .launchURL(url);
+                  Navigator.pop(context);
                 },
                 child: const Text(
                   "Click here to Read more",
