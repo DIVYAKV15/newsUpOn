@@ -46,16 +46,30 @@ dependencies:
   share_plus: ^7.2.2 #sharing content via the platform share UI
   shimmer: ^3.0.0 #shimmer to give effect while loading from api
 
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_lints: ^2.0.0
+  flutter_native_splash: ^2.3.10
+flutter_native_splash:
+  image: asset/logos/newsupOn.png
+  color: #435466
+
+
+
+
+
+
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.0
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

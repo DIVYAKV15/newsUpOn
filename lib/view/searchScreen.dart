@@ -27,14 +27,14 @@ class _SearchScreenState extends State<SearchScreen> {
               SizedBox(
                 height: 45,
                 width: MediaQuery.of(context).size.width * 2 / 3,
-                child: SearchBar(backgroundColor: MaterialStatePropertyAll(Colors.black),
-                  overlayColor: MaterialStatePropertyAll(Colors.grey),
-                  shape: MaterialStatePropertyAll<OutlinedBorder>(RoundedRectangleBorder(side: BorderSide(color: Colors.white) )),
+                child: SearchBar(backgroundColor: const MaterialStatePropertyAll(Colors.black),
+                  overlayColor: const MaterialStatePropertyAll(Colors.grey),
+                  shape: const MaterialStatePropertyAll<OutlinedBorder>(RoundedRectangleBorder(side: BorderSide(color: Colors.white) )),
                   controller: textController,
                   leading: const Icon(Icons.search,color: Colors.yellow),
                   hintText: "Search",
-                  hintStyle:MaterialStatePropertyAll<TextStyle>(TextStyle(color: Colors.white)) ,
-                  textStyle: MaterialStatePropertyAll<TextStyle>(TextStyle(color: Colors.white)) ,
+                  hintStyle:const MaterialStatePropertyAll<TextStyle>(TextStyle(color: Colors.white)) ,
+                  textStyle: const MaterialStatePropertyAll<TextStyle>(TextStyle(color: Colors.white)) ,
                   onTap: () {
                     provider.searchData(
                         searchText: textController.text.toLowerCase());
